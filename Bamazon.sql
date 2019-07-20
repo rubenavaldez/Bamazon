@@ -24,3 +24,5 @@ values("Flying V Guitar", "Instruments", 15000.00, 17),
 ("The White Album by The Beatles CD","Media", 40.00, 9);   
 
 select * from products; 
+
+
