@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+var responseData;
 
 var connection = mysql.createConnection({
  host: "localhost",
@@ -93,8 +94,18 @@ function checkQuantity(item, quantity){
     connection.query(query, function(err, res) {
       if (err) throw err;
       displayResults(res)
-     return res;
+       
+      
+      console.log(res[0].stock_quantity)
+      console.log(quantity)
+      if(quantity > res[0].stock_quantity){
+        console.log("Insufficient quantity")
+      } else{
+        console.log("We'll process your order")
+      }
+
+     connection.end();
     });
    }
-   console.log(res)
+   
 }
