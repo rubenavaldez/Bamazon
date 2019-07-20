@@ -26,7 +26,7 @@ function afterConnection() {
    if (err) throw err;
    displayResults(res)
    userPrompt(res)
-   connection.end();
+  //  connection.end();
  });
 }
 
@@ -71,28 +71,29 @@ inquirer
 
 function checkQuantity(item, quantity){
   console.log(item + " " + quantity)
-  var query = "SELECT * FROM products where item_id = " + item;
-  var connection = mysql.createConnection({
-    host: "localhost",
+  var query = "SELECT * FROM products where item_id =?; " ;
+  // var connection = mysql.createConnection({
+  //   host: "localhost",
    
-    // Your port; if not 3306
-    port: 3306,
+  //   // Your port; if not 3306
+  //   port: 3306,
    
-    // Your username
-    user: "root",
+  //   // Your username
+  //   user: "root",
    
-    // Your password
-    password: "Monkey",
-    database: "bamazon_db"
-   });
-  connection.connect(function(err) {
-    if (err) throw err;
-    // console.log("connected as id " + connection.threadId);
-    newConnection(query, item, quantity);
-   });
+  //   // Your password
+  //   password: "Monkey",
+  //   database: "bamazon_db"
+  //  });
+  // connection.connect(function(err) {
+  //   if (err) throw err;
+  //   // console.log("connected as id " + connection.threadId);
+  //   newConnection(query, item, quantity);
+  //  });
+  newConnection(query, item, quantity);
   function newConnection(query, item, quantity) {
     console.log(query)
-    connection.query(query, function(err, res) {
+    connection.query(query,[item], function(err, res) {
       if (err) throw err;
       displayResults(res)
        
@@ -105,8 +106,20 @@ function checkQuantity(item, quantity){
         console.log("We'll process your order")
         // subtract quantity from database 
        console.log ("Your total is " + (res[0].price * quantity))
-       
-
+       var newQuantity = res[0].stock_quantity - quantity;
+      //  query = "UPDATE products SET stock_quantity = "+ newQuantity + " WHERE item_id = " + item +";";
+       query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
+      //  console.log(quantity)
+      //  console.log(newQuantity)
+      //  console.log(query)
+        updateQuantity(query) 
+        function updateQuantity(query){
+          connection.query(query, [newQuantity, item], function(err, res) {
+            if (err) throw err;
+            
+          })
+        }
+        
 
 
       }
