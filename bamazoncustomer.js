@@ -62,15 +62,15 @@ inquirer
    
   checkQuantity(response.item,response.quantity)
 
-   if(response.confirm){
-       console.log(response)
-   }
+  //  if(response.confirm){
+  //      console.log(response)
+  //  }
  })
 
 }
 
 function checkQuantity(item, quantity){
-  console.log(item + " " + quantity)
+  // console.log(item + " " + quantity)
   var query = "SELECT * FROM products where item_id =?; " ;
   // var connection = mysql.createConnection({
   //   host: "localhost",
@@ -92,10 +92,10 @@ function checkQuantity(item, quantity){
   //  });
   newConnection(query, item, quantity);
   function newConnection(query, item, quantity) {
-    console.log(query)
+    // console.log(query)
     connection.query(query,[item], function(err, res) {
       if (err) throw err;
-      displayResults(res)
+      // displayResults(res)
        
       
       // console.log(res[0].stock_quantity)
@@ -104,11 +104,14 @@ function checkQuantity(item, quantity){
         console.log("Insufficient quantity")
       } else{
         console.log("We'll process your order")
+
         // subtract quantity from database 
-       console.log ("Your total is " + (res[0].price * quantity))
+       console.log ("Your total is " + (res[0].price * quantity).toFixed(2) )
        var newQuantity = res[0].stock_quantity - quantity;
       //  query = "UPDATE products SET stock_quantity = "+ newQuantity + " WHERE item_id = " + item +";";
-       query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
+       
+      query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
+      
       //  console.log(quantity)
       //  console.log(newQuantity)
       //  console.log(query)
