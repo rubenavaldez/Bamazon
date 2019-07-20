@@ -93,7 +93,8 @@ function checkQuantity(item, quantity){
     connection.query(query, function(err, res) {
       if (err) throw err;
       displayResults(res)
-     
+     return res;
     });
    }
+   console.log(res)
 }
