@@ -37,6 +37,7 @@ for(i=0; i < res.length; i++){
    console.log("Department " +res[i].department_name)
    console.log("Price $" + res[i].price)
    console.log(res[i].stock_quantity + " left in stock")
+   console.log("")
 }
 }
 
@@ -57,7 +58,7 @@ inquirer
 
  ])
  .then(function(response){
-   console.log(response.item,response.quantity)
+  //  console.log(response.item,response.quantity)
    
   checkQuantity(response.item,response.quantity)
 
@@ -86,22 +87,28 @@ function checkQuantity(item, quantity){
    });
   connection.connect(function(err) {
     if (err) throw err;
-    console.log("connected as id " + connection.threadId);
-    newConnection(query);
+    // console.log("connected as id " + connection.threadId);
+    newConnection(query, item, quantity);
    });
-  function newConnection(query) {
+  function newConnection(query, item, quantity) {
     console.log(query)
     connection.query(query, function(err, res) {
       if (err) throw err;
       displayResults(res)
        
       
-      console.log(res[0].stock_quantity)
-      console.log(quantity)
+      // console.log(res[0].stock_quantity)
+      // console.log(quantity)
       if(quantity > res[0].stock_quantity){
         console.log("Insufficient quantity")
       } else{
         console.log("We'll process your order")
+        // subtract quantity from database 
+       console.log ("Your total is " + (res[0].price * quantity))
+       
+
+
+
       }
 
      connection.end();
@@ -109,3 +116,4 @@ function checkQuantity(item, quantity){
    }
    
 }
+
