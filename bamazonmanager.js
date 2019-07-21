@@ -36,7 +36,7 @@ function displayResults(res) {
 }
 
 function userPrompt() {
-   
+
     inquirer
         .prompt([
             {
@@ -101,7 +101,7 @@ function switchChoice(response) {
 
 };
 
-function addInvPrompt(){
+function addNewPrompt() {
 
     inquirer
         .prompt([
@@ -128,15 +128,58 @@ function addInvPrompt(){
             },
         ])
         .then(function (response) {
-           console.log(response)
-           var query = 'insert into products( product_name, department_name, price, stock_quantity)values("'+ response.name + '","' + response.department +'",' + response.price +','+ response.stock +');'
-           console.log(query)
-           connection.query(query, function (err, res) {
-            if (err) throw err;
-            displayResults(res)
+            console.log(response)
+            var query = 'insert into products( product_name, department_name, price, stock_quantity)values("' + response.name + '","' + response.department + '",' + response.price + ',' + response.stock + ');'
+            console.log(query)
+            connection.query(query, function (err, res) {
+                if (err) throw err;
+                displayResults(res)
 
-            connection.end();
-        });
+                connection.end();
+            });
+        })
+
+}
+function addInvPrompt() {
+
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "What is the item number?",
+                name: "id",
+            },
+            {
+                type: "input",
+                message: "How many should we add to stock?",
+                name: "stock",
+            },
+        ])
+        .then(function (response) {
+            // console.log(response)
+
+            query = "SELECT * FROM products where item_id =?;";
+            // console.log(query)
+            connection.query(query,[response.id], function (err, res) {
+                if (err) throw err;
+
+                var newQuantity = res[0].stock_quantity + parseInt(response.stock);
+                // console.log(res[0].stock_quantity)
+                // console.log (response.stock)
+                // console.log(newQuantity)
+                query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
+                // console.log(query)
+                connection.query(query,[newQuantity, response.id], function (err, res) {
+                    if (err) throw err;
+                    displayResults(res)
+
+                    connection.end();
+                });
+
+            });
+
+
+
         })
 
 }
