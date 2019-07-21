@@ -89,6 +89,7 @@ function switchChoice(response) {
             break;
         case "Add New Product":
             console.log("Add New Product")
+            addNewPrompt()
             break;
 
         default:
@@ -128,5 +129,14 @@ function addInvPrompt(){
         ])
         .then(function (response) {
            console.log(response)
+           var query = 'insert into products( product_name, department_name, price, stock_quantity)values("'+ response.name + '","' + response.department +'",' + response.price +','+ response.stock +');'
+           console.log(query)
+           connection.query(query, function (err, res) {
+            if (err) throw err;
+            displayResults(res)
+
+            connection.end();
+        });
         })
+
 }
