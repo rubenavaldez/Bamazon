@@ -6,6 +6,29 @@ This app also features a manager function which allows the user to sort by low i
 
 This App requires Node.js and MySQL. Please refer to dependencies for additional requirements.
 
+Begin by hosting your MySQL
+
+  // You host ip; if not localhost
+    host: localhost
+
+    // Your port; if not 3306
+    port: 3306,
+
+    // Your username
+    user: "root",
+
+    // Your password
+    password: [your password],
+    database: "bamazon_db"
+
+Update the javascript files to reflect your host port and password
+
+The database name must be "bamazon_db"
+
+Run the Bamazon.sql file in your MySQL
+
+Initiate node and install npm packages: mysql and inquirer
+
 For customer functions:
 
 Begin your input with "node bamazoncustomer.js"
@@ -41,18 +64,6 @@ Ruben Valdez - Sole Developer
 
     Match or update the following parameter in MySql
 
-    // You host ip; if not localhost
-    host: localhost
-
-    // Your port; if not 3306
-    port: 3306,
-
-    // Your username
-    user: "root",
-
-    // Your password
-    password: [your password],
-    database: "bamazon_db"
 
     Demo:
     https://drive.google.com/file/d/1zRXe7ejaNF2_Hbjar1DnZiySAgbBNTKQ/view
