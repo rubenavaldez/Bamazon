@@ -62,7 +62,7 @@ function switchChoice(response) {
 
     switch (response) {
         case "View products for sale":
-            console.log("sale")
+            // console.log("sale")
 
             connection.query("SELECT * FROM products", function (err, res) {
                 if (err) throw err;
@@ -73,7 +73,7 @@ function switchChoice(response) {
 
             break;
         case "View Low Inventory":
-            console.log("low")
+            // console.log("low")
 
             connection.query("SELECT * FROM products Where stock_quantity < 5", function (err, res) {
                 if (err) throw err;
@@ -84,11 +84,11 @@ function switchChoice(response) {
 
             break;
         case "Add To Inventory":
-            console.log("add to")
+            // console.log("add to")
             addInvPrompt()
             break;
         case "Add New Product":
-            console.log("Add New Product")
+            // console.log("Add New Product")
             addNewPrompt()
             break;
 
