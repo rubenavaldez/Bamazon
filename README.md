@@ -2,7 +2,7 @@
 Online store simulator featuring MySQL and Node.js. Bamazon utilizes NPM Inquirer to populate purchasable items from MySQL. Prices are calculated dynamically and purchases are updated in MySQL
 This app also features a manager function which allows the user to sort by low inventory, add additional stock and add new products. All selections are updated in MySql 
 
-
+[![Watch the video](https://img.youtube.com/vi/IOUp-Q9_t_g/maxresdefault.jpg)](https://youtu.be/IOUp-Q9_t_g)
 
 This App requires Node.js and MySQL. Please refer to dependencies for additional requirements.
 
@@ -62,7 +62,7 @@ Select from the list of option
 Ruben Valdez - Sole Developer
 
 
-[![Watch the video](https://img.youtube.com/vi/IOUp-Q9_t_g/maxresdefault.jpg)](https://youtu.be/IOUp-Q9_t_g)
+
 
 
 
