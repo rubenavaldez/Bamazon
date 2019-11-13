@@ -61,7 +61,6 @@ Select from the list of option
 
 Ruben Valdez - Sole Developer
 
-[![Watch the video](https://i.imgur.com/iAHKwVT.png)](https://youtu.be/IOUp-Q9_t_g)
 
 [![Watch the video](https://img.youtube.com/vi/IOUp-Q9_t_g/maxresdefault.jpg)](https://youtu.be/IOUp-Q9_t_g)
 
