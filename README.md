@@ -8,7 +8,7 @@ This App requires Node.js and MySQL. Please refer to dependencies for additional
 
 Begin by hosting your MySQL
 
-  // You host ip; if not localhost
+  // Your host ip; if not localhost
     host: localhost
 
     // Your port; if not 3306
@@ -60,16 +60,3 @@ Select from the list of option
 
 
 Ruben Valdez - Sole Developer
-
-
-
-
-
-
-  
-
-    
-
-
-   
-    
