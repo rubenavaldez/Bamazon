@@ -61,7 +61,7 @@ Select from the list of option
 
 Ruben Valdez - Sole Developer
 
-[![Watch the video](https://imgur.com/iAHKwVT)](https://youtu.be/IOUp-Q9_t_g)
+[![Watch the video](https://i.imgur.com/iAHKwVT.png)](https://www.youtube.com/watch?v=IOUp-Q9_t_g&feature=youtu.be)
     Match or update the following parameter in MySql
 
 
